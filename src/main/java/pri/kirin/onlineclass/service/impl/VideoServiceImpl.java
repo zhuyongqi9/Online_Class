@@ -21,6 +21,10 @@ public class VideoServiceImpl implements VideoService {
     @Autowired
     private BaseCache baseCache;
 
+    /**
+     * 返回视频列表
+     * @return
+     */
     @Override
     public List<Video> listVideo() {
         try {
@@ -39,6 +43,10 @@ public class VideoServiceImpl implements VideoService {
         return null;
     }
 
+    /**
+     * 在缓存中提取轮播图列表
+     * @return
+     */
     @Override
     public List<VideoBanner> listVideoBanner() {
 
@@ -50,8 +58,7 @@ public class VideoServiceImpl implements VideoService {
             });
 
             if(cacheObject instanceof List){
-                List<VideoBanner> bannerList = (List<VideoBanner>) cacheObject;
-                return bannerList;
+                return (List<VideoBanner>) cacheObject;
             }
         } catch (ExecutionException e) {
             e.printStackTrace();
@@ -60,6 +67,11 @@ public class VideoServiceImpl implements VideoService {
         return null;
     }
 
+    /**
+     * 通过user_id 寻找视频详情
+     * @param videoId
+     * @return
+     */
     @Override
     public Video findDetailById(int videoId) {
         String cacheKey = String.format(CacheKeyManager.INDEX_VIDEO_DETAIL,videoId);

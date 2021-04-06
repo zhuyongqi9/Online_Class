@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 @Data
 public class BaseCache {
-
+    //10分钟缓存
     private Cache<String,Object> tenMinuteCache = CacheBuilder.newBuilder()
             //缓存初始大小
             .initialCapacity(10)
@@ -24,6 +24,7 @@ public class BaseCache {
             .recordStats()
             .build();
 
+    //1小时缓存
     private Cache<String,Object> oneHourCache = CacheBuilder.newBuilder()
             //缓存初始大小
             .initialCapacity(10)

@@ -26,6 +26,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String accessToken = request.getHeader("token");
         if(accessToken == null) accessToken = request.getParameter("token");
+
         if(StringUtils.isNotBlank(accessToken)){
             Claims claims = JWTUtils.checkJWT(accessToken);
             if(claims != null) {

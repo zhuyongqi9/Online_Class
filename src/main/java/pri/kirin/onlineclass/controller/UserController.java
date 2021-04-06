@@ -20,7 +20,7 @@ public class UserController {
     @PostMapping("register")
     public JsonData register(@RequestBody Map<String,String> userInfo){
         int rows = userService.save(userInfo);
-        return rows == 1?JsonData.buildSuccess("注册成功"):JsonData.buildError("注册失败，请重试");
+        return rows == 1 ? JsonData.buildSuccess("注册成功") : JsonData.buildError("注册失败，请重试");
     }
 
     @PostMapping("login")
@@ -32,7 +32,6 @@ public class UserController {
     @GetMapping("find_by_token")
     public JsonData findUserByToken(HttpServletRequest request){
         Integer userId = (Integer) request.getAttribute("user_id");
-        String userName = (String) request.getAttribute("user_name");
         if (userId == null) return JsonData.buildError("查询失败");
         User user = userService.findByUserId(userId);
         return JsonData.buildSuccess(user);
