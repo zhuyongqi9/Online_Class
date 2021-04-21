@@ -1,4 +1,4 @@
-package pri.kirin.onlineclass.interceptor;
+package pri.kirin.onlineclass.Interceptor;
 
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -30,7 +30,7 @@ public class CorsInterceptor implements HandlerInterceptor {
          * 都会在正式通信之前，增加一次HTTP请求，称之为预检。浏览器会先询问服务器，当前网页所在域名是否在服务器的许可名单之中，
          * 服务器允许之后，浏览器会发出正式的XMLHttpRequest请求
          */
-        if(HttpMethod.OPTIONS.toString().equals(request.getMethod())){
+        if (HttpMethod.OPTIONS.toString().equals(request.getMethod())) {
             return true;
         }
 

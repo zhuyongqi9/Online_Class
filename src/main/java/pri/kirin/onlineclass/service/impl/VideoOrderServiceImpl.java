@@ -1,15 +1,15 @@
-package pri.kirin.onlineclass.service.impl;
+package pri.kirin.onlineclass.Service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pri.kirin.onlineclass.exception.CommonException;
-import pri.kirin.onlineclass.mapper.*;
-import pri.kirin.onlineclass.model.entity.Episode;
-import pri.kirin.onlineclass.model.entity.PlayRecord;
-import pri.kirin.onlineclass.model.entity.Video;
-import pri.kirin.onlineclass.model.entity.VideoOrder;
-import pri.kirin.onlineclass.service.VideoOrderService;
+import pri.kirin.onlineclass.Exception.CommonException;
+import pri.kirin.onlineclass.Mapper.*;
+import pri.kirin.onlineclass.Model.entity.Episode;
+import pri.kirin.onlineclass.Model.entity.PlayRecord;
+import pri.kirin.onlineclass.Model.entity.Video;
+import pri.kirin.onlineclass.Model.entity.VideoOrder;
+import pri.kirin.onlineclass.Service.VideoOrderService;
 
 import java.util.Date;
 import java.util.List;
@@ -34,8 +34,10 @@ public class VideoOrderServiceImpl implements VideoOrderService {
     @Override
     public int save(int userId, int videoId) {
         //判断是否重复购买
-        VideoOrder videoOrder = videoOrderMapper.findByVideoIdAndOrderIdAndState(userId,videoId,1);
-        if(videoOrder != null){return 0;}
+        VideoOrder videoOrder = videoOrderMapper.findByVideoIdAndOrderIdAndState(userId, videoId, 1);
+        if (videoOrder != null) {
+            return 0;
+        }
 
         Video video = videoMapper.findById(videoId);
         VideoOrder newVideoOrder = new VideoOrder();
@@ -49,9 +51,9 @@ public class VideoOrderServiceImpl implements VideoOrderService {
         newVideoOrder.setState(1);
         int rows = videoOrderMapper.saveOrder(newVideoOrder);
 
-        if(rows == 1){
+        if (rows == 1) {
             Episode episode = episodeMapper.findFirstEpisodeById(videoId);
-            if(episode == null) throw new CommonException(-1,"视频下暂无内容");
+            if (episode == null) throw new CommonException(-1, "视频下暂无内容");
             PlayRecord playRecord = new PlayRecord();
 
             playRecord.setCreateTime(new Date());

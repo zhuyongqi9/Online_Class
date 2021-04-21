@@ -1,12 +1,12 @@
-package pri.kirin.onlineclass.interceptor;
+package pri.kirin.onlineclass.Interceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import pri.kirin.onlineclass.utils.JWTUtils;
-import pri.kirin.onlineclass.utils.JsonData;
+import pri.kirin.onlineclass.Utils.JWTUtils;
+import pri.kirin.onlineclass.Utils.JsonData;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 public class LoginInterceptor implements HandlerInterceptor {
     /**
      * 进入Controller之前
+     *
      * @param request
      * @param response
      * @param handler
@@ -25,18 +26,18 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String accessToken = request.getHeader("token");
-        if(accessToken == null) accessToken = request.getParameter("token");
+        if (accessToken == null) accessToken = request.getParameter("token");
 
-        if(StringUtils.isNotBlank(accessToken)){
+        if (StringUtils.isNotBlank(accessToken)) {
             Claims claims = JWTUtils.checkJWT(accessToken);
-            if(claims != null) {
+            if (claims != null) {
                 Integer id = (Integer) claims.get("id");
                 String name = (String) claims.get("name");
 
-                request.setAttribute("user_id",id);
-                request.setAttribute("user_name",name);
+                request.setAttribute("user_id", id);
+                request.setAttribute("user_name", name);
                 return true;
-            }else {
+            } else {
                 ObjectMapper objectMapper = new ObjectMapper();
                 response.setContentType("application/json;charset=utf-8");
                 PrintWriter printWriter = response.getWriter();

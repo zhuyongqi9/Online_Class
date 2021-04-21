@@ -1,4 +1,4 @@
-package pri.kirin.onlineclass.config;
+package pri.kirin.onlineclass.Config;
 
 public class CacheKeyManager {
 
@@ -12,6 +12,8 @@ public class CacheKeyManager {
      */
     public static final String INDEX_VIDEO_LIST = "index:video:list";
 
-
+    /**
+     * 视屏详情页
+     */
     public static final String INDEX_VIDEO_DETAIL = "video:detail:%s";
 }

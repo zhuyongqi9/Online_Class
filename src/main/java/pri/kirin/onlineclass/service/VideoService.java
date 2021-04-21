@@ -1,7 +1,7 @@
-package pri.kirin.onlineclass.service;
+package pri.kirin.onlineclass.Service;
 
-import pri.kirin.onlineclass.model.entity.Video;
-import pri.kirin.onlineclass.model.entity.VideoBanner;
+import pri.kirin.onlineclass.Model.entity.Video;
+import pri.kirin.onlineclass.Model.entity.VideoBanner;
 
 import java.util.List;
 

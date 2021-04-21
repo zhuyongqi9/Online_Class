@@ -1,8 +1,6 @@
-package pri.kirin.onlineclass.mapper;
+package pri.kirin.onlineclass.Mapper;
 
-import org.apache.ibatis.annotations.Param;
-import pri.kirin.onlineclass.model.entity.Episode;
-import pri.kirin.onlineclass.model.entity.PlayRecord;
+import pri.kirin.onlineclass.Model.entity.PlayRecord;
 
 public interface PlayRecordMapper {
 

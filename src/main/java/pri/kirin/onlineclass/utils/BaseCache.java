@@ -1,4 +1,4 @@
-package pri.kirin.onlineclass.utils;
+package pri.kirin.onlineclass.Utils;
 
 
 import com.google.common.cache.Cache;
@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 @Data
 public class BaseCache {
     //10分钟缓存
-    private Cache<String,Object> tenMinuteCache = CacheBuilder.newBuilder()
+    private Cache<String, Object> tenMinuteCache = CacheBuilder.newBuilder()
             //缓存初始大小
             .initialCapacity(10)
             //最大值
@@ -25,7 +25,7 @@ public class BaseCache {
             .build();
 
     //1小时缓存
-    private Cache<String,Object> oneHourCache = CacheBuilder.newBuilder()
+    private Cache<String, Object> oneHourCache = CacheBuilder.newBuilder()
             //缓存初始大小
             .initialCapacity(10)
             //最大值

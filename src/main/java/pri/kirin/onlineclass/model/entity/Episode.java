@@ -1,4 +1,4 @@
-package pri.kirin.onlineclass.model.entity;
+package pri.kirin.onlineclass.Model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -26,6 +26,6 @@ public class Episode {
     private Integer videoId;
 
     @JsonProperty("create_time")
-    @JsonFormat(pattern = "yyyy-MM-DD HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-DD HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
 }

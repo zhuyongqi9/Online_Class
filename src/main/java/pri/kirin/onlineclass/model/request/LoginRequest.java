@@ -1,4 +1,4 @@
-package pri.kirin.onlineclass.model.request;
+package pri.kirin.onlineclass.Model.request;
 
 import lombok.Data;
 

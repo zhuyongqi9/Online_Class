@@ -1,15 +1,15 @@
-package pri.kirin.onlineclass.config;
+package pri.kirin.onlineclass.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import pri.kirin.onlineclass.interceptor.CorsInterceptor;
-import pri.kirin.onlineclass.interceptor.LoginInterceptor;
+import pri.kirin.onlineclass.Interceptor.CorsInterceptor;
+import pri.kirin.onlineclass.Interceptor.LoginInterceptor;
 
 /**
  * 拦截器配置
- *
+ * <p>
  * 需要权限url      api/v1/pub/
  * 不需要权限url    api/v1/pri/
  */
@@ -17,12 +17,12 @@ import pri.kirin.onlineclass.interceptor.LoginInterceptor;
 public class InterceptorConfig implements WebMvcConfigurer {
 
     @Bean
-    LoginInterceptor loginInterceptor(){
+    LoginInterceptor loginInterceptor() {
         return new LoginInterceptor();
     }
 
     @Bean
-    CorsInterceptor corsInterceptor(){
+    CorsInterceptor corsInterceptor() {
         return new CorsInterceptor();
     }
 
@@ -34,7 +34,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
         //拦截器一定要加"/"
         registry.addInterceptor(loginInterceptor()).addPathPatterns("/api/v1/pri/*/*/**")
                 //不会被拦截
-        .excludePathPatterns("/api/v1/pri/user/login","/api/v1/pri/user/register");
+                .excludePathPatterns("/api/v1/pri/user/login", "/api/v1/pri/user/register");
         WebMvcConfigurer.super.addInterceptors(registry);
     }
 }

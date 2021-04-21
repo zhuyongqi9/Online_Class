@@ -1,9 +1,10 @@
-package pri.kirin.onlineclass.model.entity;
+package pri.kirin.onlineclass.Model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
 @Data
@@ -17,7 +18,7 @@ public class VideoOrder {
     private Integer state;
 
     @JsonProperty("create_time")
-    @JsonFormat(pattern = "yyyy-MM-DD HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-DD HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
 
     @JsonProperty("total_fee")

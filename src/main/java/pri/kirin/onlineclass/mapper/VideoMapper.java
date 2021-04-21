@@ -1,8 +1,8 @@
-package pri.kirin.onlineclass.mapper;
+package pri.kirin.onlineclass.Mapper;
 
 import org.apache.ibatis.annotations.Param;
-import pri.kirin.onlineclass.model.entity.Video;
-import pri.kirin.onlineclass.model.entity.VideoBanner;
+import pri.kirin.onlineclass.Model.entity.Video;
+import pri.kirin.onlineclass.Model.entity.VideoBanner;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public interface VideoMapper {
     List<VideoBanner> listVideoBanner();
 
 
-    Video findDetailById(@Param("video_id")int videoId);
+    Video findDetailById(@Param("video_id") int videoId);
 
-    Video findById(@Param("video_id")int videoId);
+    Video findById(@Param("video_id") int videoId);
 }

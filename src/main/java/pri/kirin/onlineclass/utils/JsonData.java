@@ -1,4 +1,4 @@
-package pri.kirin.onlineclass.utils;
+package pri.kirin.onlineclass.Utils;
 
 import lombok.Data;
 
@@ -15,16 +15,16 @@ public class JsonData {
     }
 
 
-    public static JsonData buildSuccess(Object data){
-        return new JsonData(1,data,null);
+    public static JsonData buildSuccess(Object data) {
+        return new JsonData(1, data, null);
     }
 
-    public static JsonData buildError(String msg){
-        return new JsonData(-1,null,msg);
+    public static JsonData buildError(String msg) {
+        return new JsonData(-1, null, msg);
     }
 
-    public static JsonData buildError(int code,String msg){
-        return new JsonData(code,null,msg);
+    public static JsonData buildError(int code, String msg) {
+        return new JsonData(code, null, msg);
     }
 
 }
