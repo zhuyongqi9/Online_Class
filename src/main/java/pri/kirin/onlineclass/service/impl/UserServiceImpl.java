@@ -93,6 +93,12 @@ public class UserServiceImpl implements UserService {
         } else return null;
     }
 
+    /**
+     * 保存github登录的用户
+     * @param code
+     * @param state
+     * @return
+     */
     @Override
     public User saveGithubUser(String code,String state) {
         String accessTokenUrl = String.format(githubConfig.getGITHUB_ACCESS_TOKEN_URL(),

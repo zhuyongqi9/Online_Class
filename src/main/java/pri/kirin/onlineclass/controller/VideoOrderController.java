@@ -1,6 +1,7 @@
 package pri.kirin.onlineclass.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import pri.kirin.onlineclass.Dto.VideoOrderDto;
 import pri.kirin.onlineclass.Model.entity.VideoOrder;
@@ -31,17 +32,19 @@ public class VideoOrderController {
 
     /**
      * 下单接口
-     *
-     * @return
+     * @param videoOrderRequest
+     * @param servletResponse
+     * @param servletRequest
+     * @throws Exception
      */
     @PostMapping("save")
+    @Transactional
     public void saveOrder(@RequestBody VideoOrderRequest videoOrderRequest
             ,HttpServletResponse servletResponse, HttpServletRequest servletRequest) throws Exception{
+
         Integer userId = (Integer) servletRequest.getAttribute("user_id");
 
         String ip = IpUtils.getIpAddr(servletRequest);
-        // String ip = "120.25.1.43";
-        // int userId = 2;
         VideoOrderDto videoOrderDto = new VideoOrderDto();
         videoOrderDto.setUserId(userId);
         videoOrderDto.setVideoId(videoOrderRequest.getVideoId());
@@ -64,6 +67,11 @@ public class VideoOrderController {
 
     }
 
+    /**
+     * 查询全部订单
+     * @param request
+     * @return
+     */
     @GetMapping("list")
     public JsonData list(HttpServletRequest request) {
         Integer userId = (Integer) request.getAttribute("user_id");

@@ -26,9 +26,6 @@ public class WeChatController {
     private WechatConifg wechatConifg;
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private VideoOrderService videoOrderService;
 
     /**
@@ -38,15 +35,19 @@ public class WeChatController {
      */
     @PostMapping("/order/callback")
     public void orderCallBack(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
         InputStream inputStream = request.getInputStream();
         BufferedReader bufferedReader= new BufferedReader(new InputStreamReader(inputStream,"utf-8"));
         StringBuffer stringBuffer = new StringBuffer();
         String line;
+       //将xml内容读取到StringBuffer中
         while ((line = bufferedReader.readLine())  != null){
             stringBuffer.append(line);
         }
+
         bufferedReader.close();
         inputStream.close();
+
         Map<String,String> callbackMap = WechatPayUtils.xmlToMap(stringBuffer.toString());
         SortedMap<String,String> sortedMap = WechatPayUtils.getSortedMap(callbackMap);
 

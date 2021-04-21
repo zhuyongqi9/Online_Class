@@ -13,9 +13,9 @@ import pri.kirin.onlineclass.Utils.JsonData;
 @RestController
 @RequestMapping("/api/v1/pub/video")
 public class VideoController {
+
     @Autowired
     private VideoService videoService;
-
 
     @GetMapping("list_banner")
     public JsonData listVideoBanner() {
@@ -31,4 +31,5 @@ public class VideoController {
     public JsonData findDetailById(@RequestParam(value = "video_id", required = true) int videoId) {
         return JsonData.buildSuccess(videoService.findDetailById(videoId));
     }
+
 }
