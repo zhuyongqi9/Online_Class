@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pri.kirin.onlineclass.Utils.JsonData;
 
-@ControllerAdvice
+//@ControllerAdvice
 public class CustomExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)

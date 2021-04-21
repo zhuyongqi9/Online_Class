@@ -3,7 +3,7 @@
 <mapper namespace="pri.kirin.onlineclass.Mapper.UserMapper">
 
     <insert id="save" parameterType="User">
-        INSERT INTO user (name,pwd,head_img,phone,create_time)
+        INSERT INTO user (name, pwd, head_img, phone, create_time)
         VALUES (#{name,jdbcType=VARCHAR},#{pwd,jdbcType=VARCHAR},#{headImg,jdbcType=VARCHAR}
         ,#{phone,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP});
     </insert>

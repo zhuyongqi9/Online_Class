@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Time;
 import java.util.Date;
 
 @Data
@@ -33,6 +34,19 @@ public class VideoOrder {
     @JsonProperty("video_img")
     private String videoImg;
 
+    @JsonProperty("head_img")
+    private String headImg;
+
     @JsonProperty("user_id")
     private Integer userId;
+
+    @JsonProperty("open_id")
+    private String openid;
+
+    private Integer del;
+
+    private String ip;
+
+    @JsonProperty("notify_time")
+    private Date notifyTime;
 }

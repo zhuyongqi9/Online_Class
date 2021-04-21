@@ -24,4 +24,9 @@ public class User {
     @JsonProperty("create_time")
     @JsonFormat(pattern = "yyyy-MM-DD HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
+
+    @JsonProperty("github_id")
+    private Double githubId;
+
+    private String email;
 }
