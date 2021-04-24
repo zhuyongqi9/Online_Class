@@ -40,7 +40,6 @@ public class VideoOrder {
     @JsonProperty("user_id")
     private Integer userId;
 
-    @JsonProperty("open_id")
     private String openid;
 
     private Integer del;
@@ -48,5 +47,6 @@ public class VideoOrder {
     private String ip;
 
     @JsonProperty("notify_time")
+    @JsonFormat(pattern = "yyyy-MM-DD HH:mm:ss", timezone = "GMT+8")
     private Date notifyTime;
 }

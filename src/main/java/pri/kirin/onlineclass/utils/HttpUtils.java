@@ -96,6 +96,7 @@ public class HttpUtils {
         //超时设置
         HttpPost httpPost = new HttpPost(url);
         httpPost.setHeader("Content-Type","text/html;charset = utf-8");
+
         RequestConfig requestConfig = RequestConfig.custom()
                 .setSocketTimeout(5000)
                 .setConnectTimeout(5000)
@@ -109,15 +110,16 @@ public class HttpUtils {
         }
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault();){
-           HttpResponse response= httpClient.execute(httpPost);
+            HttpResponse response= httpClient.execute(httpPost);
             HttpEntity  httpEntity =response.getEntity();
             if(response.getStatusLine().getStatusCode() == 200){
-                String result = EntityUtils.toString(response.getEntity());
+                String result = EntityUtils.toString(httpEntity);
                 return  result;
             }
         }catch (Exception e){
             e.printStackTrace();
         }
+
         return null;
     }
 }
