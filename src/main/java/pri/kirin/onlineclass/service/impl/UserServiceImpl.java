@@ -132,8 +132,6 @@ public class UserServiceImpl implements UserService {
         user.setHeadImg(head_img);
         user.setGithubId(githubId);
 
-        userMapper.save(user);
-
         return user;
     }
 }

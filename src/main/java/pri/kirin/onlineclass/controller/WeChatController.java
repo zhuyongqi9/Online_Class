@@ -57,15 +57,20 @@ public class WeChatController {
                 String outTradeNo = sortedMap.get("out_trade_no");
                 VideoOrder dbVideoOrder = videoOrderService.findByOutTradeNo(outTradeNo);
                 if(dbVideoOrder.getState() == 0){
+
                     dbVideoOrder.setOpenid(sortedMap.get("openid"));
                     dbVideoOrder.setOutTradeNo(outTradeNo);
                     dbVideoOrder.setNotifyTime(new Date());
                     dbVideoOrder.setState(1);
+                    
+                    //更新订单支付状态
                     int rows = videoOrderService.updateOrderByOutTradeNo(dbVideoOrder);
+
                     if(rows == 1){
                       response.setContentType("text/xml");
                       response.getWriter().println("SUCCESS");
                     }
+
                 }
             }
         }else {
