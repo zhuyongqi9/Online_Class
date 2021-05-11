@@ -22,14 +22,6 @@ public class CorsInterceptor implements HandlerInterceptor {
 
         response.setHeader("Access-Control-Allow-Headers", "*");
 
-
-        //这里可以不加，但是其他语言开发的话记得处理options请求
-        /**
-         * 非简单请求是对那种对服务器有特殊要求的请求，
-         * 比如请求方式是PUT或者DELETE，或者Content-Type字段类型是application/json。
-         * 都会在正式通信之前，增加一次HTTP请求，称之为预检。浏览器会先询问服务器，当前网页所在域名是否在服务器的许可名单之中，
-         * 服务器允许之后，浏览器会发出正式的XMLHttpRequest请求
-         */
         if (HttpMethod.OPTIONS.toString().equals(request.getMethod())) {
             return true;
         }
